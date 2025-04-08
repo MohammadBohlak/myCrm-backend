@@ -1,0 +1,52 @@
+1. إنشاء تفاعل جديد (POST)
+Copy
+POST /api/interactions
+مثال Body (JSON):
+
+json
+Copy
+{
+  "customerId": "507f1f77bcf86cd799439011",
+  "userId": "507f1f77bcf86cd799439012",
+  "type": "call",
+  "notes": "العميل وافق على جدولة عرض تجريبي",
+  "date": "2023-08-25T10:00:00.000Z"
+}
+الحقول المطلوبة:
+
+customerId (معرف العميل)
+
+type (نوع التفاعل)
+
+2. جلب جميع التفاعلات (GET)
+Copy
+GET /api/interactions
+إمكانية التصفية:
+
+Copy
+GET /api/interactions?customerId=507f1f77bcf86cd799439011
+3. جلب تفاعل معين (GET)
+Copy
+GET /api/interactions/[INTERACTION_ID]
+مثال:
+
+Copy
+GET /api/interactions/5f8d04b3ab3456789abcdef1
+4. تحديث تفاعل (PUT)
+Copy
+PUT /api/interactions/[INTERACTION_ID]
+مثال Body (JSON):
+
+json
+Copy
+{
+  "notes": "تم تحديث الملاحظات بعد المتابعة",
+  "type": "meeting"
+}
+5. حذف تفاعل (DELETE)
+Copy
+DELETE /api/interactions/[INTERACTION_ID]
+مثال:
+
+Copy
+DELETE /api/interactions/5f8d04b3ab3456789abcdef1

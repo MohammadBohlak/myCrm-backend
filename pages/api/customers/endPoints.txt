@@ -1,0 +1,69 @@
+نقاط نهاية جدول العملاء (Customers API) لاختبارها على Postman
+بناءً على الأكواد المقدمة، إليك نقاط النهاية الكاملة مع أمثلة للاختبار:
+
+1. إنشاء عميل جديد (POST)
+Copy
+POST /api/customers
+مثال Body (JSON):
+
+json
+Copy
+{
+  "name": "شركة التقنية الحديثة",
+  "email": "info@tech.com",
+  "phone": "+966501234567",
+  "company": "شركة التقنية",
+  "status": "lead",
+  "userId": "507f1f77bcf86cd799439011"
+}
+الاختبار على Postman:
+
+اختر Method: POST
+
+URL: http://localhost:3000/api/customers
+
+Headers:
+
+Content-Type: application/json
+
+Body: اختر raw ثم JSON وأدخل البيانات أعلاه
+
+2. جلب جميع العملاء (GET)
+Copy
+GET /api/customers
+الخيارات:
+
+?search=بحث للبحث في (الاسم، البريد، الشركة)
+
+?status=lead لتصفية حسب الحالة (lead/active/inactive)
+
+أمثلة:
+
+Copy
+GET /api/customers?search=التقنية
+GET /api/customers?status=active
+3. جلب عميل معين (GET)
+Copy
+GET /api/customers/[CUSTOMER_ID]
+مثال:
+
+Copy
+GET /api/customers/5f8d04b3ab3456789abcdef1
+4. تحديث عميل (PUT)
+Copy
+PUT /api/customers/[CUSTOMER_ID]
+مثال Body (JSON):
+
+json
+Copy
+{
+  "phone": "+966502345678",
+  "status": "active"
+}
+5. حذف عميل (DELETE)
+Copy
+DELETE /api/customers/[CUSTOMER_ID]
+مثال:
+
+Copy
+DELETE /api/customers/5f8d04b3ab3456789abcdef1
