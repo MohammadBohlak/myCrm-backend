@@ -1,10 +1,10 @@
 {
   "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/api/customers/deleted": "pages/api/customers/deleted.js",
   "/api/customers": "pages/api/customers.js",
   "/api/customers/restore/[id]": "pages/api/customers/restore/[id].js",
+  "/_error": "pages/_error.js",
   "/api/hello": "pages/api/hello.js",
   "/api/interactions/deleted": "pages/api/interactions/deleted.js",
   "/api/interactions": "pages/api/interactions.js",
@@ -13,8 +13,8 @@
   "/api/products/deleted/[id]": "pages/api/products/deleted/[id].js",
   "/api/products/deleted": "pages/api/products/deleted.js",
   "/api/products": "pages/api/products.js",
-  "/api/sales/[id]": "pages/api/sales/[id].js",
   "/api/products/restore/[id]": "pages/api/products/restore/[id].js",
+  "/api/sales/[id]": "pages/api/sales/[id].js",
   "/api/sales/deleted/[id]": "pages/api/sales/deleted/[id].js",
   "/api/sales/deleted": "pages/api/sales/deleted.js",
   "/api/sales": "pages/api/sales.js",
@@ -29,9 +29,9 @@
   "/api/users/restore/[id]": "pages/api/users/restore/[id].js",
   "/component/Layout": "pages/component/Layout.html",
   "/": "pages/index.html",
-  "/api/customers/[id]": "pages/api/customers/[id].js",
+  "/api/interactions/deleted/[id]": "pages/api/interactions/deleted/[id].js",
   "/api/interactions/[id]": "pages/api/interactions/[id].js",
   "/api/customers/deleted/[id]": "pages/api/customers/deleted/[id].js",
-  "/api/interactions/deleted/[id]": "pages/api/interactions/deleted/[id].js",
+  "/api/customers/[id]": "pages/api/customers/[id].js",
   "/404": "pages/404.html"
 }
