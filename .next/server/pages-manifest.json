@@ -1,10 +1,10 @@
 {
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
+  "/_error": "pages/_error.js",
   "/api/customers/deleted": "pages/api/customers/deleted.js",
   "/api/customers": "pages/api/customers.js",
   "/api/customers/restore/[id]": "pages/api/customers/restore/[id].js",
-  "/_error": "pages/_error.js",
   "/api/hello": "pages/api/hello.js",
   "/api/interactions/deleted": "pages/api/interactions/deleted.js",
   "/api/interactions": "pages/api/interactions.js",
@@ -31,7 +31,7 @@
   "/": "pages/index.html",
   "/api/interactions/deleted/[id]": "pages/api/interactions/deleted/[id].js",
   "/api/interactions/[id]": "pages/api/interactions/[id].js",
-  "/api/customers/deleted/[id]": "pages/api/customers/deleted/[id].js",
   "/api/customers/[id]": "pages/api/customers/[id].js",
+  "/api/customers/deleted/[id]": "pages/api/customers/deleted/[id].js",
   "/404": "pages/404.html"
 }
