@@ -30,19 +30,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_connect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5616);
 /* harmony import */ var _models_Customer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3285);
 /* harmony import */ var _utils_dbConnect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4405);
+/* harmony import */ var _utils_cors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1040);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([next_connect__WEBPACK_IMPORTED_MODULE_0__]);
 next_connect__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 // app/api/customers/route.js
 
 
 
-// import cors from '@/utils/cors';
+
+
 // import { runMiddleware } from '@/utils/cors';
 (0,_utils_dbConnect__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)();
 const handler = (0,next_connect__WEBPACK_IMPORTED_MODULE_0__["default"])();
 // GET جميع العملاء
 handler.get(async (req, res)=>{
-    // await runMiddleware(req, res, cors);
+    await (0,_utils_cors__WEBPACK_IMPORTED_MODULE_3__/* .runMiddleware */ .U)(req, res, _utils_cors__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z);
     try {
         const { search , status  } = req.query;
         let query = {};
@@ -85,6 +87,7 @@ handler.get(async (req, res)=>{
 });
 // POST إنشاء عميل جديد
 handler.post(async (req, res)=>{
+    await (0,_utils_cors__WEBPACK_IMPORTED_MODULE_3__/* .runMiddleware */ .U)(req, res, _utils_cors__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z);
     const { name , email , phone , company , status , userId  } = req.body;
     if (!name || !email) {
         //   await session.abortTransaction();
@@ -118,6 +121,46 @@ handler.post(async (req, res)=>{
 
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 1040:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": () => (/* binding */ utils_cors),
+  "U": () => (/* binding */ runMiddleware)
+});
+
+;// CONCATENATED MODULE: external "cors"
+const external_cors_namespaceObject = require("cors");
+var external_cors_default = /*#__PURE__*/__webpack_require__.n(external_cors_namespaceObject);
+;// CONCATENATED MODULE: ./utils/cors.js
+// utils/cors.js
+
+// تهيئة CORS للسماح بجميع المصادر
+const cors = external_cors_default()({
+    origin: "*",
+    methods: [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "OPTIONS"
+    ]
+});
+function runMiddleware(req, res, fn) {
+    return new Promise((resolve, reject)=>{
+        fn(req, res, (result)=>{
+            if (result instanceof Error) return reject(result);
+            return resolve(result);
+        });
+    });
+}
+/* harmony default export */ const utils_cors = (cors);
+
 
 /***/ })
 

@@ -2,7 +2,8 @@
 import nc from 'next-connect';
 import Customer from '@/models/Customer';
 import dbConnect from '@/utils/dbConnect';
-// import cors from '@/utils/cors';
+import { runMiddleware } from '@/utils/cors';
+import cors from '@/utils/cors';
 // import { runMiddleware } from '@/utils/cors';
 
 dbConnect();
@@ -11,7 +12,7 @@ const handler = nc();
 
 // GET جميع العملاء
 handler.get(async (req, res) => {
-  // await runMiddleware(req, res, cors);
+  await runMiddleware(req, res, cors);
 
   try {
     const { search, status } = req.query;
@@ -40,7 +41,7 @@ handler.get(async (req, res) => {
 
 // POST إنشاء عميل جديد
 handler.post(async (req, res) => {
-  
+  await runMiddleware(req, res, cors);
   
     const { name, email, phone, company, status, userId } = req.body;
     
