@@ -36,10 +36,13 @@ next_connect__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then
 
 
 
+// import cors from '@/utils/cors';
+// import { runMiddleware } from '@/utils/cors';
 (0,_utils_dbConnect__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)();
 const handler = (0,next_connect__WEBPACK_IMPORTED_MODULE_0__["default"])();
 // GET جميع العملاء
 handler.get(async (req, res)=>{
+    // await runMiddleware(req, res, cors);
     try {
         const { search , status  } = req.query;
         let query = {};
