@@ -44,7 +44,7 @@ next_connect__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then
 const handler = (0,next_connect__WEBPACK_IMPORTED_MODULE_0__["default"])();
 // GET جميع العملاء
 handler.get(async (req, res)=>{
-    await (0,_utils_cors__WEBPACK_IMPORTED_MODULE_3__/* .runMiddleware */ .U)(req, res, _utils_cors__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z);
+    // await runMiddleware(req, res, cors);
     try {
         const { search , status  } = req.query;
         let query = {};
@@ -74,7 +74,7 @@ handler.get(async (req, res)=>{
             query.status = status;
         }
         const customers = await _models_Customer__WEBPACK_IMPORTED_MODULE_1__/* ["default"].find */ .Z.find({
-            query
+            ...query
         }).sort({
             createdAt: -1
         });

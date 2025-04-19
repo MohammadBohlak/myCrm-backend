@@ -12,7 +12,7 @@ const handler = nc();
 
 // GET جميع العملاء
 handler.get(async (req, res) => {
-  await runMiddleware(req, res, cors);
+  // await runMiddleware(req, res, cors);
 
   try {
     const { search, status } = req.query;
@@ -30,7 +30,7 @@ handler.get(async (req, res) => {
       query.status = status;
     }
     
-    const customers = await Customer.find({query})
+    const customers = await Customer.find({...query})
       .sort({ createdAt: -1 });
     
     res.send(customers);
