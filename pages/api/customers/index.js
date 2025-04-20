@@ -30,7 +30,7 @@ handler.get(async (req, res) => {
       query.status = status;
     }
     
-    const customers = await Customer.find({...query})
+    const customers = await Customer.find({...query, isDeleted: false})
       .sort({ createdAt: -1 });
     
     res.send(customers);
