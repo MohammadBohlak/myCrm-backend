@@ -16,25 +16,38 @@ Content-Type: application/json
   "email": "test@example.com",
   "password": "simplepassword",
   "role": "customer"
+  "userName" : "kajsdkwh"
 }
  */
 handler.post(async (req, res) => {
   try {
-    const { email, password, role = 'customer' } = req.body;
+    const {userName, email, password, role = 'customer' } = req.body;
 
     // Validation
-    if (!email || !password) {
-      return res.status(400).send({ error: 'Email and password are required' });
+    if (!email) {
+      return res.status(400).send({ error: 'Email is required' });
+    }
+    if(!password){
+      
+      return res.status(400).send({ error: 'Password is required' });
+    }
+    if(!userName){
+      
+      return res.status(400).send({ error: 'User Name is required' });
     }
 
     // Check if user exists
     const exists = await User.findOne({ email });
     if (exists) {
-      return res.status(400).send({ error: 'Email already exists' });
+      return res.status(400).send({ error: 'Email is already exists' });
+    }
+    const existsName = await User.findOne({ userName });
+    if (existsName) {
+      return res.status(400).send({ error: 'User Name is already exists' });
     }
 
     // Create user (password stored in plaintext - FOR TESTING ONLY)
-    const user = new User({ email, password, role });
+    const user = new User({ email, password,userName, role });
     await user.save();
     
     // Return user without password (even though it's plaintext)

@@ -64,21 +64,21 @@ const customerSchema = new mongoose.Schema({
 
 
   // في middleware حذف العميل
-customerSchema.pre('save', function(next) {
-    if (this.isModified('isDeleted') && this.isDeleted) {
-      // تحديث المبيعات المرتبطة
-      Sale.updateMany(
-        { customerId: this._id },
-        { isDeleted: true, deletedAt: new Date() }
-      ).exec();
+// customerSchema.pre('save', function(next) {
+//     if (this.isModified('isDeleted') && this.isDeleted) {
+//       // تحديث المبيعات المرتبطة
+//       Sale.updateMany(
+//         { customerId: this._id },
+//         { isDeleted: true, deletedAt: new Date() }
+//       ).exec();
       
-      // تحديث التفاعلات المرتبطة
-      Interaction.updateMany(
-        { customerId: this._id },
-        { isDeleted: true, deletedAt: new Date() }
-      ).exec();
-    }
-    next();
-  });
+//       // تحديث التفاعلات المرتبطة
+//       Interaction.updateMany(
+//         { customerId: this._id },
+//         { isDeleted: true, deletedAt: new Date() }
+//       ).exec();
+//     }
+//     next();
+//   });
 export default mongoose.models.Customer ||
   mongoose.model("Customer", customerSchema);

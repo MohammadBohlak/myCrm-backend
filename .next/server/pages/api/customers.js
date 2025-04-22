@@ -74,7 +74,8 @@ handler.get(async (req, res)=>{
             query.status = status;
         }
         const customers = await _models_Customer__WEBPACK_IMPORTED_MODULE_1__/* ["default"].find */ .Z.find({
-            ...query
+            ...query,
+            isDeleted: false
         }).sort({
             createdAt: -1
         });

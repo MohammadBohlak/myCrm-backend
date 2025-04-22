@@ -60,19 +60,9 @@ Content-Type: application/json
 // GET all sales
 handler.get(async (req, res)=>{
     try {
-        const { customerId , productId , startDate , endDate  } = req.query;
-        let query = {};
-        if (customerId) query.customerId = customerId;
-        if (productId) query.productId = productId;
-        if (startDate || endDate) {
-            query.date = {};
-            if (startDate) query.date.$gte = new Date(startDate);
-            if (endDate) query.date.$lte = new Date(endDate);
-        }
         const sales = await _models_Sale__WEBPACK_IMPORTED_MODULE_1__/* ["default"].find */ .Z.find({
-            ...query,
             isDeleted: false
-        }).populate("customerId", "name email").populate("productId", "name price").sort({
+        }).sort({
             date: -1
         });
         res.send(sales);
@@ -85,22 +75,22 @@ handler.get(async (req, res)=>{
 // POST create new sale
 handler.post(async (req, res)=>{
     try {
-        const { customerId , productId , amount , date  } = req.body;
-        if (!customerId || !productId || amount === undefined) {
+        const { customerName , productName , customerPhone , amount , status , date  } = req.body;
+        if (!customerName || !productName || amount === undefined) {
             return res.status(400).send({
                 error: "Customer, product and amount are required"
             });
         }
         const newSale = new _models_Sale__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z({
-            customerId,
-            productId,
+            customerName,
+            productName,
+            customerPhone,
             amount: Number(amount),
-            date: date ? new Date(date) : new Date()
+            date: date ? new Date(date) : new Date(),
+            status
         });
         await newSale.save();
-        // Populate the saved sale before returning
-        const populatedSale = await _models_Sale__WEBPACK_IMPORTED_MODULE_1__/* ["default"].findById */ .Z.findById(newSale._id).populate("customerId", "name email").populate("productId", "name price");
-        res.status(201).send(populatedSale);
+        res.status(201).send(newSale);
     } catch (error) {
         if (error.name === "ValidationError") {
             return res.status(400).send({

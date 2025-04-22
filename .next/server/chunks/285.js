@@ -85,25 +85,21 @@ const customerSchema = new (mongoose__WEBPACK_IMPORTED_MODULE_0___default().Sche
 //     this.where({ isDeleted: false });
 //   });
 // في middleware حذف العميل
-customerSchema.pre("save", function(next) {
-    if (this.isModified("isDeleted") && this.isDeleted) {
-        // تحديث المبيعات المرتبطة
-        Sale.updateMany({
-            customerId: this._id
-        }, {
-            isDeleted: true,
-            deletedAt: new Date()
-        }).exec();
-        // تحديث التفاعلات المرتبطة
-        Interaction.updateMany({
-            customerId: this._id
-        }, {
-            isDeleted: true,
-            deletedAt: new Date()
-        }).exec();
-    }
-    next();
-});
+// customerSchema.pre('save', function(next) {
+//     if (this.isModified('isDeleted') && this.isDeleted) {
+//       // تحديث المبيعات المرتبطة
+//       Sale.updateMany(
+//         { customerId: this._id },
+//         { isDeleted: true, deletedAt: new Date() }
+//       ).exec();
+//       // تحديث التفاعلات المرتبطة
+//       Interaction.updateMany(
+//         { customerId: this._id },
+//         { isDeleted: true, deletedAt: new Date() }
+//       ).exec();
+//     }
+//     next();
+//   });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((mongoose__WEBPACK_IMPORTED_MODULE_0___default().models.Customer) || mongoose__WEBPACK_IMPORTED_MODULE_0___default().model("Customer", customerSchema));
 
 

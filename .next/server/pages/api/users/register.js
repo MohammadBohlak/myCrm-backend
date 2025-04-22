@@ -47,14 +47,25 @@ Content-Type: application/json
   "email": "test@example.com",
   "password": "simplepassword",
   "role": "customer"
+  "userName" : "kajsdkwh"
 }
  */ handler.post(async (req, res)=>{
     try {
-        const { email , password , role ="customer"  } = req.body;
+        const { userName , email , password , role ="customer"  } = req.body;
         // Validation
-        if (!email || !password) {
+        if (!email) {
             return res.status(400).send({
-                error: "Email and password are required"
+                error: "Email is required"
+            });
+        }
+        if (!password) {
+            return res.status(400).send({
+                error: "Password is required"
+            });
+        }
+        if (!userName) {
+            return res.status(400).send({
+                error: "User Name is required"
             });
         }
         // Check if user exists
@@ -63,13 +74,22 @@ Content-Type: application/json
         });
         if (exists) {
             return res.status(400).send({
-                error: "Email already exists"
+                error: "Email is already exists"
+            });
+        }
+        const existsName = await _models_User__WEBPACK_IMPORTED_MODULE_1__/* ["default"].findOne */ .Z.findOne({
+            userName
+        });
+        if (existsName) {
+            return res.status(400).send({
+                error: "User Name is already exists"
             });
         }
         // Create user (password stored in plaintext - FOR TESTING ONLY)
         const user = new _models_User__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z({
             email,
             password,
+            userName,
             role
         });
         await user.save();

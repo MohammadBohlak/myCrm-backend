@@ -26,8 +26,8 @@ const handler = nc();
 handler.get(async (req, res) => {
   try {
     const sale = await Sale.findById(req.query.id)
-      .populate('customerId', 'name email')
-      .populate('productId', 'name price');
+      // .populate('customerId', 'name email')
+      // .populate('productId', 'name price');
     
     if (!sale) {
       return res.status(404).send({ error: 'Sale not found' });

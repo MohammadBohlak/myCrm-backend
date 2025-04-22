@@ -14,6 +14,12 @@ exports.modules = {
 // models/User.js
 
 const userSchema = new (mongoose__WEBPACK_IMPORTED_MODULE_0___default().Schema)({
+    userName: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+    },
     email: {
         type: String,
         required: true,

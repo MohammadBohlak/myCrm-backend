@@ -54,7 +54,9 @@ DELETE /api/sales/SALE_ID
 // GET single sale
 handler.get(async (req, res)=>{
     try {
-        const sale = await _models_Sale__WEBPACK_IMPORTED_MODULE_1__/* ["default"].findById */ .Z.findById(req.query.id).populate("customerId", "name email").populate("productId", "name price");
+        const sale = await _models_Sale__WEBPACK_IMPORTED_MODULE_1__/* ["default"].findById */ .Z.findById(req.query.id);
+        // .populate('customerId', 'name email')
+        // .populate('productId', 'name price');
         if (!sale) {
             return res.status(404).send({
                 error: "Sale not found"
