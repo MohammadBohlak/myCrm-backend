@@ -75,7 +75,9 @@ handler.put(async (req, res)=>{
         const updatedSale = await _models_Sale__WEBPACK_IMPORTED_MODULE_1__/* ["default"].findByIdAndUpdate */ .Z.findByIdAndUpdate(req.query.id, req.body, {
             new: true,
             runValidators: true
-        }).populate("customerId", "name email").populate("productId", "name price");
+        });
+        // .populate('customerId', 'name email')
+        // .populate('productId', 'name price');
         if (!updatedSale) {
             return res.status(404).send({
                 error: "Sale not found"

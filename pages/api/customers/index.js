@@ -43,7 +43,7 @@ handler.get(async (req, res) => {
 handler.post(async (req, res) => {
   await runMiddleware(req, res, cors);
   
-    const { name, email, phone, company, status, userId } = req.body;
+    const { name, email, company, status, userId } = req.body;
     
     if (!name || !email) {
     //   await session.abortTransaction();
@@ -53,7 +53,7 @@ handler.post(async (req, res) => {
     const newCustomer = new Customer({
       name,
       email,
-      phone,
+    
       company,
       status: status || 'lead',
       userId

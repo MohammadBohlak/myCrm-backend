@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema(
       trim: true,
       lowercase: true,
     },
+    phone: {
+      type: String,
+      trim: true,
+    },
     password: {
       type: String,
       required: true,
@@ -39,6 +43,15 @@ const userSchema = new mongoose.Schema(
     },
     deletedAt: {
       type: Date,
+    },
+    company: {
+      type: String,
+      trim: true,
+    },
+    status: {
+      type: String,
+      enum: ["lead", "active", "inactive"],
+      default: "lead",
     },
   },
   { timestamps: true }

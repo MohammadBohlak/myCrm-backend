@@ -51,7 +51,7 @@ Content-Type: application/json
 }
  */ handler.post(async (req, res)=>{
     try {
-        const { userName , email , password , role ="customer"  } = req.body;
+        const { userName , email , password , phone , status , company , role ="customer"  } = req.body;
         // Validation
         if (!email) {
             return res.status(400).send({
@@ -89,7 +89,10 @@ Content-Type: application/json
         const user = new _models_User__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z({
             email,
             password,
+            phone,
             userName,
+            company,
+            status,
             role
         });
         await user.save();

@@ -89,7 +89,7 @@ handler.get(async (req, res)=>{
 // POST إنشاء عميل جديد
 handler.post(async (req, res)=>{
     await (0,_utils_cors__WEBPACK_IMPORTED_MODULE_3__/* .runMiddleware */ .U)(req, res, _utils_cors__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z);
-    const { name , email , phone , company , status , userId  } = req.body;
+    const { name , email , company , status , userId  } = req.body;
     if (!name || !email) {
         //   await session.abortTransaction();
         return res.status(400).send({
@@ -99,7 +99,6 @@ handler.post(async (req, res)=>{
     const newCustomer = new _models_Customer__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z({
         name,
         email,
-        phone,
         company,
         status: status || "lead",
         userId

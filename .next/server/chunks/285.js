@@ -41,10 +41,6 @@ const customerSchema = new (mongoose__WEBPACK_IMPORTED_MODULE_0___default().Sche
             "Please enter a valid email"
         ]
     },
-    phone: {
-        type: String,
-        trim: true
-    },
     company: {
         type: String,
         trim: true

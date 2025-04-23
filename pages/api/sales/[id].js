@@ -47,8 +47,8 @@ handler.put(async (req, res) => {
       req.body,
       { new: true, runValidators: true }
     )
-    .populate('customerId', 'name email')
-    .populate('productId', 'name price');
+    // .populate('customerId', 'name email')
+    // .populate('productId', 'name price');
     
     if (!updatedSale) {
       return res.status(404).send({ error: 'Sale not found' });

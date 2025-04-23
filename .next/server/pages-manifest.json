@@ -2,8 +2,8 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/api/customers/deleted": "pages/api/customers/deleted.js",
-  "/api/customers": "pages/api/customers.js",
   "/_error": "pages/_error.js",
+  "/api/customers": "pages/api/customers.js",
   "/api/customers/restore/[id]": "pages/api/customers/restore/[id].js",
   "/api/hello": "pages/api/hello.js",
   "/api/interactions/deleted": "pages/api/interactions/deleted.js",
@@ -20,6 +20,8 @@
   "/api/sales": "pages/api/sales.js",
   "/api/sales/restore/[id]": "pages/api/sales/restore/[id].js",
   "/api/users/[id]": "pages/api/users/[id].js",
+  "/api/users/admins": "pages/api/users/admins.js",
+  "/api/users/customers": "pages/api/users/customers.js",
   "/api/users/deleted/[id]": "pages/api/users/deleted/[id].js",
   "/api/users/deleted": "pages/api/users/deleted.js",
   "/api/users": "pages/api/users.js",
@@ -30,8 +32,8 @@
   "/component/Layout": "pages/component/Layout.html",
   "/": "pages/index.html",
   "/api/interactions/[id]": "pages/api/interactions/[id].js",
+  "/api/customers/deleted/[id]": "pages/api/customers/deleted/[id].js",
   "/api/interactions/deleted/[id]": "pages/api/interactions/deleted/[id].js",
   "/api/customers/[id]": "pages/api/customers/[id].js",
-  "/api/customers/deleted/[id]": "pages/api/customers/deleted/[id].js",
   "/404": "pages/404.html"
 }

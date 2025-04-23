@@ -21,10 +21,7 @@ const customerSchema = new mongoose.Schema({
     lowercase: true,
     match: [/.+\@.+\..+/, "Please enter a valid email"],
   },
-  phone: {
-    type: String,
-    trim: true,
-  },
+ 
   company: {
     type: String,
     trim: true,

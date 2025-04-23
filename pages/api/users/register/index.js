@@ -21,7 +21,7 @@ Content-Type: application/json
  */
 handler.post(async (req, res) => {
   try {
-    const {userName, email, password, role = 'customer' } = req.body;
+    const {userName, email, password, phone, status, company, role = 'customer' } = req.body;
 
     // Validation
     if (!email) {
@@ -47,7 +47,7 @@ handler.post(async (req, res) => {
     }
 
     // Create user (password stored in plaintext - FOR TESTING ONLY)
-    const user = new User({ email, password,userName, role });
+    const user = new User({ email, password, phone, userName,company, status, role });
     await user.save();
     
     // Return user without password (even though it's plaintext)

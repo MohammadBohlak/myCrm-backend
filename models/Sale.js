@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 const saleSchema = new mongoose.Schema(
   {
     // المعلومات الأساسية
-   
     amount: {
       type: Number,
       required: [true, "Amount is required"],

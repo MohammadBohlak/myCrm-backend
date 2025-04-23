@@ -27,6 +27,10 @@ const userSchema = new (mongoose__WEBPACK_IMPORTED_MODULE_0___default().Schema)(
         trim: true,
         lowercase: true
     },
+    phone: {
+        type: String,
+        trim: true
+    },
     password: {
         type: String,
         required: true
@@ -53,6 +57,19 @@ const userSchema = new (mongoose__WEBPACK_IMPORTED_MODULE_0___default().Schema)(
     },
     deletedAt: {
         type: Date
+    },
+    company: {
+        type: String,
+        trim: true
+    },
+    status: {
+        type: String,
+        enum: [
+            "lead",
+            "active",
+            "inactive"
+        ],
+        default: "lead"
     }
 }, {
     timestamps: true
