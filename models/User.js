@@ -50,8 +50,8 @@ const userSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["lead", "active", "inactive"],
-      default: "lead",
+      enum: ["lead", "active", "inactive", "member"],
+      default: "member",
     },
   },
   { timestamps: true }
