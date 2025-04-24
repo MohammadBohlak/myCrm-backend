@@ -48,14 +48,14 @@ handler.get(async (req, res) => {
 // POST create new sale
 handler.post(async (req, res) => {
   try {
-    const { userName, productName,customerPhone, amount, status, date } = req.body;
+    const { customerName, productName,customerPhone, amount, status, date } = req.body;
 
-    if (!userName || !productName || amount === undefined) {
+    if (!customerName || !productName || amount === undefined) {
       return res.status(400).send({ error: 'Customer, product and amount are required' });
     }
 
     const newSale = new Sale({
-      userName,
+      customerName,
       productName,
       customerPhone,
       amount: Number(amount),
