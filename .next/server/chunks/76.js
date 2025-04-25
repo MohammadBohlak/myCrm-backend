@@ -43,6 +43,18 @@ const userSchema = new (mongoose__WEBPACK_IMPORTED_MODULE_0___default().Schema)(
         ],
         default: "customer"
     },
+    theme: {
+        type: String,
+        enum: [
+            "light",
+            "dark",
+            "red",
+            "blue",
+            "green",
+            "yellow"
+        ],
+        default: "light"
+    },
     createdAt: {
         type: Date,
         default: Date.now

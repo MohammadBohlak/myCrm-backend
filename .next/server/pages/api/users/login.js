@@ -54,8 +54,7 @@ Content-Type: application/json
         const { email , password  } = req.body;
         // Find user
         const user = await _models_User__WEBPACK_IMPORTED_MODULE_1__/* ["default"].findOne */ .Z.findOne({
-            email,
-            isDeleted: false
+            email
         });
         if (!user) {
             return res.status(401).send({
@@ -63,10 +62,16 @@ Content-Type: application/json
                 loggedIn: false
             });
         }
+        if (user.isDeleted == true) {
+            return res.status(401).send({
+                error: "Your account is banned",
+                loggedIn: false
+            });
+        }
         // Compare plaintext passwords (FOR TESTING ONLY)
         if (password !== user.password) {
             return res.status(401).send({
-                error: "Invalid credentials",
+                error: "Incorrect password",
                 loggedIn: false
             });
         }

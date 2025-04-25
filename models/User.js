@@ -29,6 +29,11 @@ const userSchema = new mongoose.Schema(
       enum: ["admin", "customer"],
       default: "customer",
     },
+    theme: {
+      type: String,
+      enum: ["light", "dark", 'red', 'blue', 'green', 'yellow'],
+      default: "light",
+    },
     createdAt: {
       type: Date,
       default: Date.now,

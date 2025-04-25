@@ -51,7 +51,7 @@ Content-Type: application/json
 }
  */ handler.post(async (req, res)=>{
     try {
-        const { userName , email , password , phone , status , company , role ="customer"  } = req.body;
+        const { userName , email , password , phone , status , company , theme ="light" , role ="customer"  } = req.body;
         // Validation
         if (!email) {
             return res.status(400).send({
@@ -93,6 +93,7 @@ Content-Type: application/json
             userName,
             company,
             status,
+            theme,
             role
         });
         await user.save();

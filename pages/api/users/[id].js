@@ -100,7 +100,6 @@ handler.delete(async (req, res) => {
     try {
       const { id } = req.query;
       const updateData = req.body;
-  
       // إذا كانت هناك كلمة سر جديدة، نقوم بتشفيرها
       // if (updateData.password) {
       //   updateData.password = await hashPassword(updateData.password);
