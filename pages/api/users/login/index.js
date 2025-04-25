@@ -23,9 +23,9 @@ handler.post(async (req, res) => {
     const { email, password } = req.body;
 
     // Find user
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email, isDeleted: false });
     if (!user) {
-      return res.status(401).send({ error: 'Invalid credentials', loggedIn: false });
+      return res.status(401).send({ error: 'User not found', loggedIn: false });
     }
 
     // Compare plaintext passwords (FOR TESTING ONLY)

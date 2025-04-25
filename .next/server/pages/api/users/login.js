@@ -54,11 +54,12 @@ Content-Type: application/json
         const { email , password  } = req.body;
         // Find user
         const user = await _models_User__WEBPACK_IMPORTED_MODULE_1__/* ["default"].findOne */ .Z.findOne({
-            email
+            email,
+            isDeleted: false
         });
         if (!user) {
             return res.status(401).send({
-                error: "Invalid credentials",
+                error: "User not found",
                 loggedIn: false
             });
         }

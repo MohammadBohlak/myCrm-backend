@@ -67,9 +67,10 @@ const userSchema = new (mongoose__WEBPACK_IMPORTED_MODULE_0___default().Schema)(
         enum: [
             "lead",
             "active",
-            "inactive"
+            "inactive",
+            "member"
         ],
-        default: "lead"
+        default: "member"
     }
 }, {
     timestamps: true
