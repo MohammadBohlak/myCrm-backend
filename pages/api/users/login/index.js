@@ -23,14 +23,16 @@ handler.post(async (req, res) => {
     const { email, password } = req.body;
 
     // Find user
-    const user = await User.findOne({ email, isDeleted: false });
+    const user = await User.findOne({ email});
     if (!user) {
       return res.status(401).send({ error: 'User not found', loggedIn: false });
     }
-
+    if(user.isDeleted == true){
+      return res.status(401).send({ error: 'Your account is banned', loggedIn: false });
+    }
     // Compare plaintext passwords (FOR TESTING ONLY)
     if (password !== user.password) {
-      return res.status(401).send({ error: 'Invalid credentials' ,loggedIn: false});
+      return res.status(401).send({ error: 'Incorrect password' ,loggedIn: false});
     }
 
     // Return user without password
